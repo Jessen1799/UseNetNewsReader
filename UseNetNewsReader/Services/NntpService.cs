@@ -12,6 +12,13 @@ public class NntpService
     
     public string? Result { get; private set; } 
     public bool IsConnected { get; private set; }
+    
+    /// <summary>
+    /// Connects asynchronously to server. Uses 'NetworkStream' and 'StreamReader'
+    /// to read the stream of data from server. Receives confirmation msg upon connection success.
+    /// </summary>
+    /// <param name="ip"></param>
+    /// <param name="port"></param>
     public async Task ConnectAsync(string ip, int port)
     {
         _client = new TcpClient();
@@ -23,4 +30,23 @@ public class NntpService
         Result = await _reader.ReadLineAsync();
         IsConnected = true;
     }
+
+    /// <summary>
+    /// Disconnects service if there is a connection. Closes resources properly
+    /// Secures references to used objects disappears when invoked.
+    /// State changed on 'IsConnected'
+    /// </summary>
+    public void Disconnect()
+    {
+        //Lukker bare
+        _reader?.Close();
+        _client?.Close();
+
+        //Fjerner referencer til objekterne, fordi de ikke skal 'eksisterer' mere.
+        _reader = null;
+        _client = null;
+        
+        IsConnected = false;
+    }
+    
 }
