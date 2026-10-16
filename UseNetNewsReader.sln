@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseNetNewsReader", "UseNetNewsReader\UseNetNewsReader.csproj", "{D32C3441-0B77-4C23-8BB3-E02509FF5269}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseNetNewsReaderTests", "..\UseNetNewsReaderTests\UseNetNewsReaderTests\UseNetNewsReaderTests.csproj", "{7A501BDC-BC5C-4AB4-8E4F-94F8FB899E5A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D32C3441-0B77-4C23-8BB3-E02509FF5269}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D32C3441-0B77-4C23-8BB3-E02509FF5269}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D32C3441-0B77-4C23-8BB3-E02509FF5269}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D32C3441-0B77-4C23-8BB3-E02509FF5269}.Debug|x64.Build.0 = Debug|Any CPU
+		{D32C3441-0B77-4C23-8BB3-E02509FF5269}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D32C3441-0B77-4C23-8BB3-E02509FF5269}.Debug|x86.Build.0 = Debug|Any CPU
+		{D32C3441-0B77-4C23-8BB3-E02509FF5269}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D32C3441-0B77-4C23-8BB3-E02509FF5269}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D32C3441-0B77-4C23-8BB3-E02509FF5269}.Release|x64.ActiveCfg = Release|Any CPU
+		{D32C3441-0B77-4C23-8BB3-E02509FF5269}.Release|x64.Build.0 = Release|Any CPU
+		{D32C3441-0B77-4C23-8BB3-E02509FF5269}.Release|x86.ActiveCfg = Release|Any CPU
+		{D32C3441-0B77-4C23-8BB3-E02509FF5269}.Release|x86.Build.0 = Release|Any CPU
+		{7A501BDC-BC5C-4AB4-8E4F-94F8FB899E5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A501BDC-BC5C-4AB4-8E4F-94F8FB899E5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A501BDC-BC5C-4AB4-8E4F-94F8FB899E5A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7A501BDC-BC5C-4AB4-8E4F-94F8FB899E5A}.Debug|x64.Build.0 = Debug|Any CPU
+		{7A501BDC-BC5C-4AB4-8E4F-94F8FB899E5A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7A501BDC-BC5C-4AB4-8E4F-94F8FB899E5A}.Debug|x86.Build.0 = Debug|Any CPU
+		{7A501BDC-BC5C-4AB4-8E4F-94F8FB899E5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A501BDC-BC5C-4AB4-8E4F-94F8FB899E5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A501BDC-BC5C-4AB4-8E4F-94F8FB899E5A}.Release|x64.ActiveCfg = Release|Any CPU
+		{7A501BDC-BC5C-4AB4-8E4F-94F8FB899E5A}.Release|x64.Build.0 = Release|Any CPU
+		{7A501BDC-BC5C-4AB4-8E4F-94F8FB899E5A}.Release|x86.ActiveCfg = Release|Any CPU
+		{7A501BDC-BC5C-4AB4-8E4F-94F8FB899E5A}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
