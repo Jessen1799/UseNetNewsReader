@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 
@@ -47,6 +48,12 @@ public class NntpService
         _client = null;
         
         IsConnected = false;
+    }
+
+    public async Task<List<string>> GetNewsGroups()
+    {
+        
+        
     }
     
 }
