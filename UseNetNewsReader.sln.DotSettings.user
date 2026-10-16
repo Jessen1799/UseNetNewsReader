@@ -1,7 +1,4 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=28ba300d_002Dcfeb_002D4641_002D8f1e_002Db5e056e6347e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Connect_WhenServerIsAvailable_ReceivesGreeting" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7A501BDC-BC5C-4AB4-8E4F-94F8FB899E5A::net10.0::UseNetNewsReaderTests.NntpTests.Connect_WhenServerIsAvailable_ReceivesGreeting&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7A501BDC-BC5C-4AB4-8E4F-94F8FB899E5A::net10.0::UseNetNewsReaderTests.NntpTests.Connect_WhenServerIsNotAvailable&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+  &lt;Project Location="C:\Users\Oliver\RiderProjects\UseNetNewsReaderTests\UseNetNewsReaderTests" Presentation="&amp;lt;UseNetNewsReaderTests&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

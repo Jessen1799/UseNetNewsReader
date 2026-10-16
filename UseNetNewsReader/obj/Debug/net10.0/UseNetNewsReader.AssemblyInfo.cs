@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UseNetNewsReader")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7f7be0b0779da49f9c3ed8970d2be537821cbdbb")]
 [assembly: System.Reflection.AssemblyProductAttribute("UseNetNewsReader")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UseNetNewsReader")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
