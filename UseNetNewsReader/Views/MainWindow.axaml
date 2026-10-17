@@ -14,9 +14,21 @@
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainViewModel />
     </Design.DataContext>
-
-    <TextBox Text="{Binding Greeting}"
-             HorizontalAlignment="Center"
-             VerticalAlignment="Center" />
+    
+    
+    <Grid ShowGridLines="True" RowDefinitions="*,*" ColumnDefinitions="*,*">
+        <Button Grid.Row="0" Grid.Column="0"
+                Content="Connect to server"
+                Command="{Binding ConnectToServerCommand}"
+                FontSize="36"
+                FontWeight="Bold">
+        </Button>
+        <Button Grid.Row="0" Grid.Column="1"
+                Content="Disconnect from server"
+                Command="{Binding DisconnectFromServerCommand}"
+                FontSize="36"
+                FontWeight="Bold">
+        </Button>
+    </Grid>
 
 </Window>

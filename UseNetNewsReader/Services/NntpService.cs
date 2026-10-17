@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace UseNetNewsReader.Services;
 
-public class NntpService
+public class NntpService : IConnection
 {
     private TcpClient? _client;
     private NetworkStream? _data;
@@ -32,6 +32,7 @@ public class NntpService
         
         ValidationMessage = await _reader.ReadLineAsync();
         IsConnected = true;
+        Console.WriteLine("Connected: " + IsConnected);
     }
 
     /// <summary>
@@ -50,6 +51,7 @@ public class NntpService
         _client = null;
         
         IsConnected = false;
+        Console.WriteLine("Disconnected: " + IsConnected);
     }
 
     public async Task<List<string>> GetNewsGroups()
