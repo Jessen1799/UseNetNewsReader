@@ -52,6 +52,7 @@ public class NntpService : IConnection
         
         IsConnected = false;
         Console.WriteLine("Disconnected: " + IsConnected);
+        
     }
 
     public async Task<List<string>> GetNewsGroups()
