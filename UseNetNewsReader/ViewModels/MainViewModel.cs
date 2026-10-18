@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using UseNetNewsReader.Services;
 
@@ -9,6 +11,9 @@ namespace UseNetNewsReader.ViewModels;
 public partial class MainViewModel : ViewModelBase
 {
     private IConnection? _connection;
+
+    [ObservableProperty] 
+    private List<string> testListe = new();
     
 
     [RelayCommand]
@@ -40,5 +45,16 @@ public partial class MainViewModel : ViewModelBase
         }
         _connection.Disconnect();
         //Succes scenarie med label som fortæller brugeren at forbindelsen blev dc'et succesfuldt.
+    }
+
+    [RelayCommand]
+    private async Task DisplayNewsGroups()
+    {
+        
+        if (_connection != null)
+        {
+            TestListe = await _connection.GetNewsGroups();
+        }
+        
     }
 }

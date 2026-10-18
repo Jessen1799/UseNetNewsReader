@@ -20,7 +20,7 @@
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainViewModel />
+        <vm:MainViewModel/>
     </Design.DataContext>
     
     <!--Mainpage design-->
@@ -38,6 +38,24 @@
             Command="{Binding DisconnectFromServerCommand}"
             Classes="regular">
         </Button>
+        
+        <!--Test-->
+        <TableView 
+            Grid.Row="1" 
+            Grid.Column="1" 
+            ItemsSource="{Binding TestListe}"
+            BorderBrush="Black"
+            BorderThickness="2">
+            <TableView.Columns>
+                <TableViewColumn Header="TestHeader"/>
+            </TableView.Columns>
+        </TableView>
+        
+        <Button Grid.Row="1" Grid.Column="1"
+                Command="{Binding DisplayNewsGroupsCommand}"
+                Content="Klik mig for at hente nyghedsgrupper">
+        </Button>
+        
         
     </Grid>
 
