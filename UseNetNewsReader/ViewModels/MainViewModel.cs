@@ -1,4 +1,5 @@
 using System;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
 using UseNetNewsReader.Services;
@@ -14,11 +15,19 @@ public partial class MainViewModel : ViewModelBase
     private async Task ConnectToServer()
     {
         _connection = new NntpService();
-        if (_connection == null)
+        try
         {
             await _connection.ConnectAsync("127.0.0.1", 4119);
-            //Label til bruger som fortæller at server ikke er tilængelig/nægtede adgang.
         }
+        catch (SocketException e)
+        {
+            Console.WriteLine("SocketException: {0}", e);
+            //Mræeklgit lag. Virker som om at det ikke køre asynkront endnu
+        }
+        //objektet vil altid være null, fortsat null, indtil metode kaldt, fordi metode opretter tcpclient. Hvordan laver jeg secure tjek
+        
+        //Label-> Textblock i stedet til bruger som fortæller at server ikke er tilængelig/nægtede adgang.
+        
     }
 
     [RelayCommand]

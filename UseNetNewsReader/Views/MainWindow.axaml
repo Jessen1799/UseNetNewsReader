@@ -8,6 +8,14 @@
         x:DataType="vm:MainViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="UseNetNewsReader">
+    
+    <!--Styling for regular button-->
+    <Window.Styles>
+        <Style Selector="Button.regular">
+            <Setter Property="FontSize" Value="36"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Window.Styles>
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -15,20 +23,22 @@
         <vm:MainViewModel />
     </Design.DataContext>
     
-    
+    <!--Mainpage design-->
     <Grid ShowGridLines="True" RowDefinitions="*,*" ColumnDefinitions="*,*">
-        <Button Grid.Row="0" Grid.Column="0"
-                Content="Connect to server"
-                Command="{Binding ConnectToServerCommand}"
-                FontSize="36"
-                FontWeight="Bold">
+        <Button 
+            Grid.Row="0" Grid.Column="0"
+            Content="Connect to server"
+            Command="{Binding ConnectToServerCommand}"
+            Classes="regular">
         </Button>
-        <Button Grid.Row="0" Grid.Column="1"
-                Content="Disconnect from server"
-                Command="{Binding DisconnectFromServerCommand}"
-                FontSize="36"
-                FontWeight="Bold">
+        
+        <Button 
+            Grid.Row="0" Grid.Column="1"
+            Content="Disconnect from server"
+            Command="{Binding DisconnectFromServerCommand}"
+            Classes="regular">
         </Button>
+        
     </Grid>
 
 </Window>

@@ -15,25 +15,6 @@ public class NntpService : IConnection
     
     public string? ValidationMessage { get; private set; } 
     public bool IsConnected { get; private set; }
-    
-    /// <summary>
-    /// Connects asynchronously to server. Uses 'NetworkStream' and 'StreamReader'
-    /// to read the stream of data received from server. Receives confirmation msg upon connection success.
-    /// </summary>
-    /// <param name="ip"></param>
-    /// <param name="port"></param>
-    public async Task ConnectAsync(string ip, int port)
-    {
-        _client = new TcpClient();
-        
-        await _client.ConnectAsync(ip, port);
-        _data =  _client.GetStream();
-        _reader = new StreamReader(_data);
-        
-        ValidationMessage = await _reader.ReadLineAsync();
-        IsConnected = true;
-        Console.WriteLine("Connected: " + IsConnected);
-    }
 
     /// <summary>
     /// Disconnects service if there is a connection. Closes resources properly
@@ -82,5 +63,24 @@ public class NntpService : IConnection
             }
         }
         return resultList;
+    }
+
+    /// <summary>
+    /// Connects asynchronously to server. Uses 'NetworkStream' and 'StreamReader'
+    /// to read the stream of data received from server. Receives confirmation msg upon connection success.
+    /// </summary>
+    /// <param name="ip"></param>
+    /// <param name="port"></param>
+    public async Task ConnectAsync(string ip, int port)
+    {
+        _client = new TcpClient();
+        
+        await _client.ConnectAsync(ip, port);
+        _data =  _client.GetStream();
+        _reader = new StreamReader(_data);
+        
+        ValidationMessage = await _reader.ReadLineAsync();
+        IsConnected = true;
+        Console.WriteLine("Connected: " + IsConnected); 
     }
 }
