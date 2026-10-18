@@ -14,7 +14,11 @@ public partial class MainViewModel : ViewModelBase
     private async Task ConnectToServer()
     {
         _connection = new NntpService();
-        await _connection.ConnectAsync("127.0.0.1", 4119);
+        if (_connection == null)
+        {
+            await _connection.ConnectAsync("127.0.0.1", 4119);
+            //Label til bruger som fortæller at server ikke er tilængelig/nægtede adgang.
+        }
     }
 
     [RelayCommand]
@@ -22,9 +26,10 @@ public partial class MainViewModel : ViewModelBase
     {
         if (_connection == null)
         {
-            Console.WriteLine("No connection established");
+            //Label skal fremvises som fortæller at der ikke er en forbindelse aktiv at disconnecte
             return;
         }
         _connection.Disconnect();
+        //Succes scenarie med label som fortæller brugeren at forbindelsen blev dc'et succesfuldt.
     }
 }
