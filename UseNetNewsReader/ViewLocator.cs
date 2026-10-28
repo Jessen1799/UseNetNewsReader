@@ -1,8 +1,8 @@
-using System;
 using System.Diagnostics.CodeAnalysis;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using UseNetNewsReader.ViewModels;
+using UseNetNewsReader.Views;
 
 namespace UseNetNewsReader;
 
@@ -16,18 +16,14 @@ public class ViewLocator : IDataTemplate
 {
     public Control? Build(object? param)
     {
-        if (param is null)
-            return null;
-
-        var name = param.GetType().FullName!.Replace("ViewModel", "View", StringComparison.Ordinal);
-        var type = Type.GetType(name);
-
-        if (type != null)
+        return param switch
         {
-            return (Control)Activator.CreateInstance(type)!;
-        }
-
-        return new TextBlock { Text = "Not Found: " + name };
+            LoginViewModel => new LoginView(),
+            HomeViewModel => new HomeView(),
+            MainViewModel => new MainWindowView(),
+            
+            _ => new TextBlock { Text = "No view yet implemented" }
+        };
     }
 
     public bool Match(object? data)

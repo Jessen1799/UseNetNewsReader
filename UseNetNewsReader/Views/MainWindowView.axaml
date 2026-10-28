@@ -1,0 +1,46 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:UseNetNewsReader.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="UseNetNewsReader.Views.MainWindowView"
+        x:DataType="vm:MainViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="UseNetNewsReader">
+    
+    
+    <!--Styling for regular button-->
+    <Window.Styles>
+        <Style Selector="Button.regular">
+            <Setter Property="FontSize" Value="36"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Window.Styles>
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainViewModel/>
+    </Design.DataContext>
+    
+    <!--Mainpage design-->
+    <Grid ShowGridLines="True" RowDefinitions="*,*" ColumnDefinitions="*,*">
+        
+        <Button Grid.Row="0" Grid.Column="0"
+                Content="Test om den skifter"
+                Command="{Binding ChangeSceneryToLoginCommand}">
+        </Button>
+        
+        <Button Grid.Row="0" Grid.Column="1"
+                Content="HomeViewModel"
+                Command="{Binding ChangeSceneryToHomeCommand}">
+            
+        </Button>
+        
+        <ContentControl Grid.Row="1" Grid.Column="1"
+                        Content="{Binding CurrentPage}">
+        </ContentControl>
+    </Grid>
+
+</Window>

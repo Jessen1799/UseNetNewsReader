@@ -10,4 +10,5 @@ public interface IConnection
     public void Disconnect();
 
     public Task<List<string>> GetNewsGroups();
+    
 }
