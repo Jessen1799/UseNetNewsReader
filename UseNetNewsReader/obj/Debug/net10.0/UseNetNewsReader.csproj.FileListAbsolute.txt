@@ -91,3 +91,4 @@ C:\Users\Oliver\RiderProjects\UseNetNewsReader\UseNetNewsReader\obj\Debug\net10.
 C:\Users\Oliver\RiderProjects\UseNetNewsReader\UseNetNewsReader\obj\Debug\net10.0\UseNetNewsReader.genruntimeconfig.cache
 C:\Users\Oliver\RiderProjects\UseNetNewsReader\UseNetNewsReader\obj\Debug\net10.0\ref\UseNetNewsReader.dll
 C:\Users\Oliver\RiderProjects\UseNetNewsReader\UseNetNewsReader\obj\Debug\net10.0\UseNetNewsReader.sourcelink.json
+C:\Users\Oliver\RiderProjects\UseNetNewsReader\UseNetNewsReader\bin\Debug\net10.0\Microsoft.Extensions.DependencyInjection.dll

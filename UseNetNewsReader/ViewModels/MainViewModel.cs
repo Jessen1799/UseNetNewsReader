@@ -5,56 +5,36 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using UseNetNewsReader.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace UseNetNewsReader.ViewModels;
 
 public partial class MainViewModel : ViewModelBase
 {
-    private IConnection? _connection;
-
-    [ObservableProperty] 
-    private List<string> testListe = new();
     
+    [ObservableProperty]
+    private ViewModelBase _currentPage;
+    
+    private static MainViewModel _thisWindow;
 
-    [RelayCommand]
-    private async Task ConnectToServer()
+    public MainViewModel()
     {
-        _connection = new NntpService();
-        try
-        {
-            await _connection.ConnectAsync("127.0.0.1", 4119);
-        }
-        catch (SocketException e)
-        {
-            Console.WriteLine("SocketException: {0}", e);
-            //Mræeklgit lag. Virker som om at det ikke køre asynkront endnu
-        }
-        //objektet vil altid være null, fortsat null, indtil metode kaldt, fordi metode opretter tcpclient. Hvordan laver jeg secure tjek
         
-        //Label-> Textblock i stedet til bruger som fortæller at server ikke er tilængelig/nægtede adgang.
+        _thisWindow = this;
+        
+        CurrentPage = App.Current.Services.GetService<HomeViewModel>();
         
     }
 
     [RelayCommand]
-    private void DisconnectFromServer()
+    public void ChangeSceneryToLogin()
     {
-        if (_connection == null)
-        {
-            //Label skal fremvises som fortæller at der ikke er en forbindelse aktiv at disconnecte
-            return;
-        }
-        _connection.Disconnect();
-        //Succes scenarie med label som fortæller brugeren at forbindelsen blev dc'et succesfuldt.
+        CurrentPage = App.Current.Services.GetService<LoginViewModel>();
     }
 
     [RelayCommand]
-    private async Task DisplayNewsGroups()
+    public void ChangeSceneryToHome()
     {
-        
-        if (_connection != null)
-        {
-            TestListe = await _connection.GetNewsGroups();
-        }
-        
+        CurrentPage = App.Current.Services.GetService<HomeViewModel>();
     }
 }
