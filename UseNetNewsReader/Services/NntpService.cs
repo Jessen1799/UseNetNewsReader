@@ -87,6 +87,12 @@ public class NntpService : IConnection
     public async Task AuthenticateAsync(string username, string password)
     {
         Console.WriteLine("AuthenticateAsync kaldt");
+        if (IsAuthenticated == true)
+        {
+            Console.WriteLine("Already authenticated");
+            return;
+        }
+        
         
         var authenticateUserCommando =  Encoding.UTF8.GetBytes($"authinfo user {username}\r\n");
         var authenticatePassCommando = Encoding.UTF8.GetBytes($"authinfo pass {password}\r\n");
@@ -96,20 +102,20 @@ public class NntpService : IConnection
             await _data.WriteAsync(authenticateUserCommando);
         }
         var serverResponseUser = await _reader.ReadLineAsync();
-        //Console.WriteLine($"Server response user: {serverResponseUser}");
+        Console.WriteLine($"Server response user: {serverResponseUser}");
 
         if (serverResponseUser != null && serverResponseUser.StartsWith("381"))
         {
             await _data.WriteAsync(authenticatePassCommando);
         }
         var serverResponsePass = await _reader.ReadLineAsync();
-        //Console.WriteLine($"Server response pass: {serverResponsePass}");
+        Console.WriteLine($"Server response pass: {serverResponsePass}");
 
         if (serverResponsePass != null && serverResponsePass.StartsWith("281"))
         {
             IsAuthenticated = true;
         }
 
-        //Console.WriteLine(serverResponsePass);
+        Console.WriteLine(serverResponsePass);
     }
 }
