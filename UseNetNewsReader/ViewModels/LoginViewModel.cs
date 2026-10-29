@@ -6,16 +6,13 @@ namespace UseNetNewsReader.ViewModels;
 
 public partial class LoginViewModel : ViewModelBase
 {
-    [ObservableProperty] private ViewModelBase? _currentPage;
+    //[ObservableProperty] private ViewModelBase? _currentPage;
 
-    private static LoginViewModel _thisWindow;
+    //private static LoginViewModel _thisWindow;
     
     public LoginViewModel()
     {
-        
-        _thisWindow = this;
-
-        //CurrentPage = App.Current.Services.GetService<>();
+        //_thisWindow = this;
     }
     
     
