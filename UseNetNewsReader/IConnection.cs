@@ -11,4 +11,6 @@ public interface IConnection
 
     public Task<List<string>> GetNewsGroups();
     
+    public Task AuthenticateAsync(string username, string password);
+    
 }

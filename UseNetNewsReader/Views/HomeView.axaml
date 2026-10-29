@@ -31,6 +31,12 @@
             Classes="regular">
         </Button>
         
+        <Button Grid.Row="0" Grid.Column="0"
+                Content="Authenticate"
+                Command="{Binding AuthenticateUserCommand}"
+                Margin="50"
+                HorizontalAlignment="Right"/>
+        
         <Button 
             Grid.Row="0" Grid.Column="1"
             Content="Disconnect from server"

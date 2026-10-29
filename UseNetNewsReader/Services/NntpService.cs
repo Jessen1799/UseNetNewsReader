@@ -13,9 +13,9 @@ public class NntpService : IConnection
     private NetworkStream? _data;
     private StreamReader? _reader;
     
-    public string? ValidationMessage { get; private set; } 
+    private string? ValidationMessageFromServer { get; set; } 
     public bool IsConnected { get; private set; }
-
+    public bool IsAuthenticated { get; private set; }
     /// <summary>
     /// Disconnects service if there is a connection. Closes resources properly
     /// Secures references to used objects disappears when invoked.
@@ -79,8 +79,37 @@ public class NntpService : IConnection
         _data =  _client.GetStream();
         _reader = new StreamReader(_data);
         
-        ValidationMessage = await _reader.ReadLineAsync();
+        ValidationMessageFromServer = await _reader.ReadLineAsync();
         IsConnected = true;
-        Console.WriteLine("Connected: " + IsConnected); 
+        Console.WriteLine(ValidationMessageFromServer);
+    }
+
+    public async Task AuthenticateAsync(string username, string password)
+    {
+        Console.WriteLine("AuthenticateAsync kaldt");
+        
+        var authenticateUserCommando =  Encoding.UTF8.GetBytes($"authinfo user {username}\r\n");
+        var authenticatePassCommando = Encoding.UTF8.GetBytes($"authinfo pass {password}\r\n");
+        
+        if (_data != null)
+        {
+            await _data.WriteAsync(authenticateUserCommando);
+        }
+        var serverResponseUser = await _reader.ReadLineAsync();
+        //Console.WriteLine($"Server response user: {serverResponseUser}");
+
+        if (serverResponseUser != null && serverResponseUser.StartsWith("381"))
+        {
+            await _data.WriteAsync(authenticatePassCommando);
+        }
+        var serverResponsePass = await _reader.ReadLineAsync();
+        //Console.WriteLine($"Server response pass: {serverResponsePass}");
+
+        if (serverResponsePass != null && serverResponsePass.StartsWith("281"))
+        {
+            IsAuthenticated = true;
+        }
+
+        //Console.WriteLine(serverResponsePass);
     }
 }

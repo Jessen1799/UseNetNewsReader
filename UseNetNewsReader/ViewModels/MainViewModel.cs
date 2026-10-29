@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Net.Sockets;
-using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using UseNetNewsReader.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace UseNetNewsReader.ViewModels;
@@ -22,8 +17,7 @@ public partial class MainViewModel : ViewModelBase
         
         _thisWindow = this;
         
-        CurrentPage = App.Current.Services.GetService<HomeViewModel>();
-        
+        CurrentPage = App.Current.Services.GetService<LoginViewModel>();
     }
 
     [RelayCommand]
