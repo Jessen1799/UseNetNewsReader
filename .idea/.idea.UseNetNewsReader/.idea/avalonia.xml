@@ -3,7 +3,10 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="UseNetNewsReader/Views/HomeView.axaml" value="UseNetNewsReader/UseNetNewsReader.csproj" />
+        <entry key="UseNetNewsReader/Views/LoginView.axaml" value="UseNetNewsReader/UseNetNewsReader.csproj" />
         <entry key="UseNetNewsReader/Views/MainWindow.axaml" value="UseNetNewsReader/UseNetNewsReader.csproj" />
+        <entry key="UseNetNewsReader/Views/MainWindowView.axaml" value="UseNetNewsReader/UseNetNewsReader.csproj" />
       </map>
     </option>
   </component>

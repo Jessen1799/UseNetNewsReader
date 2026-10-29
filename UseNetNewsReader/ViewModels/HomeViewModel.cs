@@ -32,7 +32,15 @@ public partial class HomeViewModel : ViewModelBase
         //objektet vil altid være null, fortsat null, indtil metode kaldt, fordi metode opretter tcpclient. Hvordan laver jeg secure tjek
         
         //Label-> Textblock i stedet til bruger som fortæller at server ikke er tilængelig/nægtede adgang.
-        
+    }
+
+    [RelayCommand]
+    public async Task AuthenticateUser()
+    {
+        if (_connection != null)
+        {
+            await _connection.AuthenticateAsync("Unknown1717", "kontor1337");
+        }
     }
 
     [RelayCommand]
