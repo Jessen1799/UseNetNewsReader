@@ -13,7 +13,7 @@ public class NntpService : IConnection
     private NetworkStream? _data;
     private StreamReader? _reader;
     
-    private string? ValidationMessageFromServer { get; set; } 
+    public string? ValidationMessageFromServer { get; private set; } 
     public bool IsConnected { get; private set; }
     public bool IsAuthenticated { get; private set; }
     /// <summary>

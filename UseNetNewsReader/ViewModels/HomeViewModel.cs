@@ -17,33 +17,6 @@ public partial class HomeViewModel : ViewModelBase
     
 
     [RelayCommand]
-    private async Task ConnectToServer()
-    {
-        _connection = new NntpService();
-        try
-        {
-            await _connection.ConnectAsync("news.eternal-september.org", 119);
-        }
-        catch (SocketException e)
-        {
-            Console.WriteLine("SocketException: {0}", e);
-            //Mræeklgit lag. Virker som om at det ikke køre asynkront endnu
-        }
-        //objektet vil altid være null, fortsat null, indtil metode kaldt, fordi metode opretter tcpclient. Hvordan laver jeg secure tjek
-        
-        //Label-> Textblock i stedet til bruger som fortæller at server ikke er tilængelig/nægtede adgang.
-    }
-
-    [RelayCommand]
-    public async Task AuthenticateUser()
-    {
-        if (_connection != null)
-        {
-            await _connection.AuthenticateAsync("Unknown1717", "kontor1337");
-        }
-    }
-
-    [RelayCommand]
     private void DisconnectFromServer()
     {
         if (_connection == null)

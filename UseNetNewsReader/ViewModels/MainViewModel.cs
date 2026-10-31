@@ -11,24 +11,36 @@ public partial class MainViewModel : ViewModelBase
     private ViewModelBase _currentPage;
     
     private static MainViewModel _thisWindow;
+    private LoginViewModel _loginViewModel;
+    private HomeViewModel _homeViewModel;
+    
 
     public MainViewModel()
     {
+        _loginViewModel = App.Current.Services.GetService<LoginViewModel>();
+        _loginViewModel.LoginSuccess += ChangeViewToHome;
+        
+        
         
         _thisWindow = this;
-        
-        CurrentPage = App.Current.Services.GetService<LoginViewModel>();
+        CurrentPage = _loginViewModel;
     }
 
     [RelayCommand]
-    public void ChangeSceneryToLogin()
+    private void ChangeSceneryToLogin()
     {
         CurrentPage = App.Current.Services.GetService<LoginViewModel>();
     }
 
     [RelayCommand]
-    public void ChangeSceneryToHome()
+    private void ChangeSceneryToHome()
     {
         CurrentPage = App.Current.Services.GetService<HomeViewModel>();
+    }
+
+    private void ChangeViewToHome()
+    {
+        _homeViewModel = App.Current.Services.GetService<HomeViewModel>();
+        CurrentPage = _homeViewModel;
     }
 }

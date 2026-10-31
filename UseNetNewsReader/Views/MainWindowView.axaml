@@ -42,5 +42,4 @@
                         Content="{Binding CurrentPage}">
         </ContentControl>
     </Grid>
-
 </Window>
