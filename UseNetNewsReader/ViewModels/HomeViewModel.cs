@@ -10,21 +10,21 @@ namespace UseNetNewsReader.ViewModels;
 
 public partial class HomeViewModel : ViewModelBase
 {
-    private IConnection? _connection;
+    private readonly IConnection? _connection;
 
     [ObservableProperty] 
     private List<string> testListe = new();
+
+    public HomeViewModel(IConnection connection)
+    {
+        _connection = connection;
+    }
     
 
     [RelayCommand]
     private void DisconnectFromServer()
     {
-        if (_connection == null)
-        {
-            //Label skal fremvises som fortæller at der ikke er en forbindelse aktiv at disconnecte
-            return;
-        }
-        _connection.Disconnect();
+        _connection?.Disconnect();
         //Succes scenarie med label som fortæller brugeren at forbindelsen blev dc'et succesfuldt.
         
     }
@@ -37,6 +37,5 @@ public partial class HomeViewModel : ViewModelBase
         {
             TestListe = await _connection.GetNewsGroups();
         }
-        
     }
 }

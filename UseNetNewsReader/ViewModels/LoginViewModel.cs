@@ -9,7 +9,7 @@ namespace UseNetNewsReader.ViewModels;
 
 public partial class LoginViewModel : ViewModelBase
 {
-    private IConnection? _connection;
+    private readonly IConnection? _connection;
     public event Action? LoginSuccess;
     
     [ObservableProperty]
@@ -23,7 +23,11 @@ public partial class LoginViewModel : ViewModelBase
     
     [ObservableProperty]
     public partial string Password { get; set; }
-    
+
+    public LoginViewModel(IConnection? connection)
+    {
+        _connection = connection;
+    }
     
     [RelayCommand]
     private async Task AuthenticateUser()
@@ -38,8 +42,6 @@ public partial class LoginViewModel : ViewModelBase
     [RelayCommand]
     private async Task ConnectToServer()
     {
-        _connection = new NntpService();
-        
         if (ServerPort == null)
         {
             //Ping bruger om at felt skal udfyldes?
@@ -56,7 +58,6 @@ public partial class LoginViewModel : ViewModelBase
         catch (SocketException e)
         {
             Console.WriteLine("SocketException: {0}", e);
-            //Mræeklgit lag. Virker som om at det ikke køre asynkront endnu
         }
         //objektet vil altid være null, fortsat null, indtil metode kaldt, fordi metode opretter tcpclient. Hvordan laver jeg secure tjek
         

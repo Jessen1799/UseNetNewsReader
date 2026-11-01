@@ -3,6 +3,7 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
+using UseNetNewsReader.Services;
 using UseNetNewsReader.ViewModels;
 using UseNetNewsReader.Views;
 
@@ -23,7 +24,8 @@ public partial class App : Application
     private static IServiceProvider ConfigureServices()
     {
         var services = new ServiceCollection();
-        
+
+        services.AddSingleton<IConnection, NntpService>();
         services.AddSingleton<MainViewModel>();
         services.AddSingleton<LoginViewModel>();
         services.AddSingleton<HomeViewModel>();
