@@ -6,15 +6,6 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UseNetNewsReader.Views.HomeView"
              x:DataType="viewModels:HomeViewModel">
-    
-    
-    <!--Styling for regular button-->
-    <!--<Window.Styles>
-        <Style Selector="Button.regular">
-            <Setter Property="FontSize" Value="36"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-        </Style>
-    </Window.Styles>-->
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,

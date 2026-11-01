@@ -7,17 +7,134 @@
              x:Class="UseNetNewsReader.Views.LoginView"
              x:DataType="viewModels:LoginViewModel">
     
-    
-    <StackPanel>
-        <Button
-            Content="Connect to server"
-            Command="{Binding ConnectToServerCommand}">
-        </Button>
-        
-        <Button
-                Content="Authenticate"
-                Command="{Binding AuthenticateUserCommand}"
-                Margin="50"
-                HorizontalAlignment="Right"/>
-    </StackPanel>
+    <Grid Background="DarkTurquoise">
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Spacing="20">
+            
+            
+            <!--Header-->
+            <StackPanel
+                HorizontalAlignment="Center"
+                Spacing="10"
+                Margin="0, 0, 0, 10">
+
+                <TextBlock
+                    Text="Usenet Newsreader"
+                    FontSize="30"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    HorizontalAlignment="Center">
+                </TextBlock>
+                
+                <TextBlock
+                    Text="Connect to your preferred news server"
+                    FontSize="12"
+                    Foreground="Gray"
+                    HorizontalAlignment="Center">
+                </TextBlock>
+            </StackPanel>
+            
+            <!--Server connection fields-->
+            <StackPanel Spacing="10">
+                <TextBlock
+                    Text="1. SERVER CONNECTION"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Foreground="GhostWhite">
+                </TextBlock>
+                
+                <StackPanel Spacing="5">
+                    <TextBlock
+                        Text="Server IP address"
+                        FontSize="11"
+                        Foreground="White">
+                    </TextBlock>
+                    
+                    <TextBox
+                        Text="{Binding ServerIP}"
+                        PlaceholderText="news.eternal-september.org.."
+                        Padding="10">
+                    </TextBox>
+                </StackPanel>
+                
+                <StackPanel Spacing="5">
+                    <TextBlock
+                        Text="Port"
+                        Foreground="GhostWhite"
+                        FontSize="11">
+                    </TextBlock>
+                    
+                    <TextBox
+                        Text="{Binding ServerPort}"
+                        PlaceholderText="119"
+                        Padding="10">
+                    </TextBox>
+                </StackPanel>
+                
+                <Button
+                    Content="Connect to server"
+                    Command="{Binding ConnectToServerCommand}"
+                    Background="Gray"
+                    Foreground="Black"
+                    HorizontalAlignment="Center"
+                    Padding="12"
+                    FontWeight="Bold">
+                </Button>
+                
+            </StackPanel>
+            
+            <!--Authentication-->
+            
+            <StackPanel Spacing="10">
+                <TextBlock
+                    Text="2. Authenticate user"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Foreground="GhostWhite">
+                </TextBlock>
+                
+                <StackPanel Spacing="5">
+                    <TextBlock
+                        Text="Username"
+                        FontSize="11"
+                        Foreground="White">
+                    </TextBlock>
+                    
+                    <TextBox
+                        Text="{Binding Username}"
+                        PlaceholderText="Enter username.."
+                        Padding="10">
+                    </TextBox>
+                </StackPanel>
+                
+                <StackPanel Spacing="5">
+                    <TextBlock
+                        Text="Password"
+                        Foreground="GhostWhite"
+                        FontSize="11">
+                    </TextBlock>
+                    
+                    <TextBox
+                        Text="{Binding Password}"
+                        PasswordChar="*"
+                        PlaceholderText="Enter password.."
+                        Padding="10">
+                    </TextBox>
+                </StackPanel>
+                
+                <Button
+                    Content="Execute authentication"
+                    Command="{Binding AuthenticateUserCommand}"
+                    Background="Gray"
+                    Foreground="Black"
+                    HorizontalAlignment="Center"
+                    Padding="12"
+                    FontWeight="Bold">
+                </Button>
+                
+            </StackPanel>
+        </StackPanel>
+    </Grid>
 </UserControl>

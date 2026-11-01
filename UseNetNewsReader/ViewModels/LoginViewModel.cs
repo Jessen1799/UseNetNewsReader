@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using UseNetNewsReader.Services;
 
@@ -11,13 +12,25 @@ public partial class LoginViewModel : ViewModelBase
     private IConnection? _connection;
     public event Action? LoginSuccess;
     
+    [ObservableProperty]
+    public partial string ServerIP { get; set; }
+    
+    [ObservableProperty]
+    public partial string? ServerPort { get; set; }
+    
+    [ObservableProperty]
+    public partial string Username { get; set; }
+    
+    [ObservableProperty]
+    public partial string Password { get; set; }
+    
     
     [RelayCommand]
     private async Task AuthenticateUser()
     {
         if (_connection != null)
         {
-            await _connection.AuthenticateAsync("Unknown1717", "kontor1337");
+            await _connection.AuthenticateAsync(Username, Password);
             LoginSuccess?.Invoke();
         }
     }
@@ -26,9 +39,19 @@ public partial class LoginViewModel : ViewModelBase
     private async Task ConnectToServer()
     {
         _connection = new NntpService();
+        
+        if (ServerPort == null)
+        {
+            //Ping bruger om at felt skal udfyldes?
+            return;
+        }
+        
+        var serverPort = int.Parse(ServerPort);
+        
+        
         try
         {
-            await _connection.ConnectAsync("news.eternal-september.org", 119);
+            await _connection.ConnectAsync(ServerIP, serverPort);
         }
         catch (SocketException e)
         {
