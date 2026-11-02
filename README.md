@@ -14,5 +14,5 @@ Github: Jessen1799
 
 ## Acknowledgments
 
-Inspiration, code snippets, etc.
-* [Avalonia Controls]([[https://github.com/matiassingers/awesome-readme](https://docs.avaloniaui.net/controls/)](https://docs.avaloniaui.net/controls/))
+
+* [Avalonia Controls](https://github.com/matiassingers/awesome-readme](https://docs.avaloniaui.net/controls/)](https://docs.avaloniaui.net/controls/)
