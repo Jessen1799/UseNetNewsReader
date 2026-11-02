@@ -3,15 +3,19 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using UseNetNewsReader.Services;
+
 
 namespace UseNetNewsReader.ViewModels;
 
 public partial class LoginViewModel : ViewModelBase
 {
+    //Instance variables
     private readonly IConnection? _connection;
+    //Generic delegate
     public event Action? LoginSuccess;
-    
+
+    #region ObservableProperties
+
     [ObservableProperty]
     public partial string ServerIP { get; set; }
     
@@ -23,7 +27,13 @@ public partial class LoginViewModel : ViewModelBase
     
     [ObservableProperty]
     public partial string Password { get; set; }
+    #endregion
+    
 
+    /// <summary>
+    /// Dependency injection to ensure that it uses the proper connection throughout the lifespan.
+    /// </summary>
+    /// <param name="connection"></param>
     public LoginViewModel(IConnection? connection)
     {
         _connection = connection;
@@ -34,8 +44,12 @@ public partial class LoginViewModel : ViewModelBase
     {
         if (_connection != null)
         {
-            await _connection.AuthenticateAsync(Username, Password);
-            LoginSuccess?.Invoke();
+            var success = await _connection.AuthenticateAsync(Username, Password);
+            
+            if (success == true)
+            {
+                LoginSuccess?.Invoke();
+            }
         }
     }
     
@@ -44,12 +58,10 @@ public partial class LoginViewModel : ViewModelBase
     {
         if (ServerPort == null)
         {
-            //Ping bruger om at felt skal udfyldes?
             return;
         }
         
         var serverPort = int.Parse(ServerPort);
-        
         
         try
         {
@@ -59,8 +71,5 @@ public partial class LoginViewModel : ViewModelBase
         {
             Console.WriteLine("SocketException: {0}", e);
         }
-        //objektet vil altid være null, fortsat null, indtil metode kaldt, fordi metode opretter tcpclient. Hvordan laver jeg secure tjek
-        
-        //Label-> Textblock i stedet til bruger som fortæller at server ikke er tilængelig/nægtede adgang.
     }
 }

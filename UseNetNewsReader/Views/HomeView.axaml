@@ -6,39 +6,179 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UseNetNewsReader.Views.HomeView"
              x:DataType="viewModels:HomeViewModel">
-
+    
+    
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <viewModels:HomeViewModel/>
     </Design.DataContext>
     
-    <!--Mainpage design-->
-    <Grid ShowGridLines="True" RowDefinitions="*,*" ColumnDefinitions="*,*">
-        <Button 
-            Grid.Row="0" Grid.Column="1"
-            Content="Disconnect from server"
-            Command="{Binding DisconnectFromServerCommand}"
-            Classes="regular">
-        </Button>
-        
-        <!--Test-->
-        <TableView 
-            Grid.Row="1" 
-            Grid.Column="1" 
-            ItemsSource="{Binding TestListe}"
-            BorderBrush="Black"
-            BorderThickness="2">
-            <TableView.Columns>
-                <TableViewColumn Header="TestHeader"/>
-            </TableView.Columns>
-        </TableView>
-        
-        <Button Grid.Row="1" Grid.Column="1"
-                Command="{Binding DisplayNewsGroupsCommand}"
-                Content="Klik mig for at hente nyghedsgrupper">
-        </Button>
-        
-        
-    </Grid>
+    <!--Mainpage design is mostly helped prettify through AI generation.-->
+<Grid RowDefinitions="Auto,*"
+      ColumnDefinitions="260,*"
+      Background="#F3F6F8">
+
+    <!-- HEADER -->
+    <Border Grid.Row="0"
+            Grid.ColumnSpan="2"
+            Background="#00BFC4"
+            Padding="20">
+
+ <Grid ColumnDefinitions="*,Auto">
+            <StackPanel Spacing="3">
+                <TextBlock Text="Usenet Newsreader"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+
+                <TextBlock Text="Browse and read newsgroups"
+                           Foreground="#E5FFFF"
+                           FontSize="12"/>
+            </StackPanel>
+
+            <Button Grid.Column="1"
+                    Content="Disconnect"
+                    Command="{Binding DisconnectFromServerCommand}"
+                    VerticalAlignment="Center"
+                    Background="White"
+                    Foreground="#007F83"/>
+        </Grid>
+    </Border>
+
+
+    <!-- LEFT SIDEBAR: NEWSGROUPS -->
+    <Border Grid.Row="1"
+            Grid.Column="0"
+            Background="White"
+            Padding="15"
+            BorderBrush="#DDE5E8"
+            BorderThickness="0,0,1,0">
+
+        <Grid RowDefinitions="Auto,Auto,*">
+
+            <TextBlock Text="NEWSGROUPS"
+                       FontWeight="Bold"
+                       FontSize="14"
+                       Foreground="#334155"
+                       Margin="0,0,0,12"/>
+
+            <Button Grid.Row="1"
+                    Content="Load news groups"
+                    Command="{Binding DisplayNewsGroupsCommand}"
+                    Background="#00BFC4"
+                    Foreground="White"
+                    HorizontalAlignment="Stretch"
+                    Margin="0,0,0,12"/>
+
+            <ListBox Grid.Row="2"
+                     ItemsSource="{Binding NewsGroups}"
+                     SelectedItem="{Binding SelectedNewsGroup}">
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"
+                                   FontSize="13"
+                                   Padding="5"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+            </ListBox>
+        </Grid>
+    </Border>
+
+
+    <!-- MAIN CONTENT -->
+    <Border Grid.Row="1"
+            Grid.Column="1"
+            Background="#F3F6F8"
+            Padding="18">
+
+        <Grid RowDefinitions="Auto,2*,Auto,3*"
+              RowSpacing="12">
+
+            <!-- ARTICLES HEADER -->
+            <Grid Grid.Row="0"
+                  ColumnDefinitions="*,Auto">
+
+                <TextBlock Text="ARTICLES"
+                           FontSize="16"
+                           FontWeight="Bold"
+                           Foreground="#334155"
+                           VerticalAlignment="Center"/>
+
+                <Button Grid.Column="1"
+                        Content="Get all articles"
+                        Command="{Binding DisplayAllArticlesCommand}"
+                        Background="#00BFC4"
+                        Foreground="White"/>
+            </Grid>
+
+
+            <!-- ARTICLES TABLE -->
+            <Border Grid.Row="1"
+                    Background="White"
+                    CornerRadius="6"
+                    Padding="5">
+
+                <DataGrid ItemsSource="{Binding Articles}"
+                          SelectedItem="{Binding SelectedArticle}"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True">
+
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="Article ID"
+                                            Binding="{Binding ArticleId}"
+                                            Width="100"/>
+
+                        <DataGridTextColumn Header="Subject"
+                                            Binding="{Binding Subject}"
+                                            Width="3*"/>
+
+                        <DataGridTextColumn Header="Date"
+                                            Binding="{Binding Date}"
+                                            Width="2*"/>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </Border>
+
+
+            <!-- ARTICLE CONTENT HEADER -->
+            <Grid Grid.Row="2"
+                  ColumnDefinitions="*,Auto">
+
+                <TextBlock Text="ARTICLE CONTENT"
+                           FontSize="16"
+                           FontWeight="Bold"
+                           Foreground="#334155"
+                           VerticalAlignment="Center"/>
+
+                <Button Grid.Column="1"
+                        Content="Read article"
+                        Command="{Binding DisplayArticleContentCommand}"
+                        Background="#00BFC4"
+                        Foreground="White"/>
+            </Grid>
+
+
+            <!-- ARTICLE CONTENT -->
+            <Border Grid.Row="3"
+                    Background="White"
+                    CornerRadius="6"
+                    Padding="10">
+
+                <TextBox Text="{Binding ArticleContent}"
+                         AcceptsReturn="True"
+                         TextWrapping="Wrap"
+                         IsReadOnly="True"
+                         BorderThickness="0"
+                         Background="White"/>
+
+            </Border>
+        </Grid>
+    </Border>
+</Grid>
 </UserControl>
