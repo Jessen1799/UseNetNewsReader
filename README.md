@@ -15,4 +15,5 @@ Github: Jessen1799
 ## Acknowledgments
 
 
-* [Avalonia Controls](https://github.com/matiassingers/awesome-readme](https://docs.avaloniaui.net/controls/)](https://docs.avaloniaui.net/controls/)
+* [Avalonia Controls](https://docs.avaloniaui.net/controls/)
+* [Readme Template](https://gist.github.com/DomPizzie/7a5ff55ffa9081f2de27c315f5018afc)
